@@ -16,7 +16,8 @@ inputs = {
 "calc_add" : ["Add 1 and 2"],
 "calc_sub" : ["subtract 1 and 2","subtract 1 from 2"],
 "calc_mul" : ["multiply 1 and 2","multiply 1 by 2"],
-"calc_div" : ["divide 1 and 2","divide 1 from 2"]}
+"calc_div" : ["divide 1 and 2","divide 1 from 2"],
+"cmd" : ["cmd example"]}
 #Outputs
 
 greet_resp = ["'Sup bro", "Hey", "*nods*", "How you doing?"]
@@ -42,6 +43,7 @@ while inp.lower() not in inputs["exit"]:
     var = 0
     integers = []
     calc = []
+    cmd = ""
     inp = input("Say:")
     for i in inputs:
         var = 0
@@ -101,5 +103,12 @@ while inp.lower() not in inputs["exit"]:
             except:
                 pass
         print("Bot:", div(integers))
+
+    elif dict_place == "cmd":
+        for i in range(4,len(inp)):
+            cmd += inp[i]
+
+        print("Bot: Executing command:",cmd)
+        os.popen(cmd)
     else:
         print("Bot: I do not understand.")
